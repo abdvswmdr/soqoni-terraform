@@ -18,7 +18,7 @@
   <img src="docs/azure-infra.png" alt="Soqoni Azure Infrastructure (pending)" width="900">
 </p>
 
-## What This Manages
+## Modules
 
 | Module | Resource | Status |
 |--------|----------|--------|
@@ -30,12 +30,7 @@
 
 State is stored remotely in Azure Blob Storage (`tfstatedevinitcron/tfstate/soqoni/soqoni.tfstate`). No state file in this repo.
 
-## Prerequisites
-
-- Azure CLI — authenticated via `az login`
-- Access to the `Azure for Students` subscription (`fc6b3998-...`)
-
-## Quick Start
+## Setup
 
 ```bash
 # 1. Clone and enter the repo
@@ -58,7 +53,7 @@ terraform plan
 terraform apply
 ```
 
-## Module Structure
+## Structure
 
 ```
 soqoni-terraform/
@@ -72,7 +67,7 @@ soqoni-terraform/
     aks/                # azurerm_kubernetes_cluster (SystemAssigned identity, KV CSI addon)
 ```
 
-## Outputs After Apply
+## Outputs
 
 | Output | Value |
 |--------|-------|
