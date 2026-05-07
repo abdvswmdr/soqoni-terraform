@@ -1,13 +1,3 @@
-import {
-  to = module.resource_group.azurerm_resource_group.this
-  id = "/subscriptions/${var.subscription_id}/resourceGroups/${var.resource_group_name}"
-}
-
-import {
-  to = module.aks.azurerm_kubernetes_cluster.this
-  id = "/subscriptions/${var.subscription_id}/resourceGroups/${var.resource_group_name}/providers/Microsoft.ContainerService/managedClusters/${var.aks_cluster_name}"
-}
-
 module "resource_group" {
   source   = "./modules/resource-group"
   name     = var.resource_group_name
