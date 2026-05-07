@@ -24,5 +24,6 @@ module "aks" {
   kubernetes_version  = var.kubernetes_version
   node_count          = var.node_count
   vm_size             = var.vm_size
+  ssh_public_key      = var.ssh_public_key
   tags                = var.tags
 }

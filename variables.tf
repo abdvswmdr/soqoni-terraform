@@ -53,3 +53,8 @@ variable "vm_size" {
   description = "VM size for the default node pool"
   default     = "Standard_B2s"
 }
+
+variable "ssh_public_key" {
+  type        = string
+  description = "SSH public key for AKS Linux node pool — matches key used at cluster creation"
+}
