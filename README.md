@@ -7,7 +7,6 @@
 
 # soqoni-terraform
 
-
 [Terraform ≥ 1.5](https://developer.hashicorp.com/terraform/install) IaC for the Soqoni microservices platform on Azure. Manages the AKS cluster and supporting infrastructure as versioned, reproducible code.
 
 <!-- TODO: architecture diagram showing Azure resource hierarchy:
@@ -20,13 +19,13 @@
 
 ## Modules
 
-| Module | Resource | Status |
-|--------|----------|--------|
-| `modules/resource-group` | `soqoni-rg` (eastasia) | ✅ Imported |
-| `modules/aks` | `soqoni-aks` — Standard_B2s, k8s 1.34, Key Vault CSI addon | ✅ Imported |
-| `modules/mysql` | Azure MySQL Flexible Server | 🔜 Planned |
-| `modules/cosmos` | Azure Cosmos DB (MongoDB API, serverless) | 🔜 Planned |
-| `modules/keyvault` | Azure Key Vault + role assignments | 🔜 Planned |
+| Module                   | Resource                                                   | Status      |
+| ------------------------ | ---------------------------------------------------------- | ----------- |
+| `modules/resource-group` | `soqoni-rg` (eastasia)                                     | ✅ Imported |
+| `modules/aks`            | `soqoni-aks` — Standard_B2s, k8s 1.34, Key Vault CSI addon | ✅ Imported |
+| `modules/mysql`          | Azure MySQL Flexible Server                                | 🔜 Planned  |
+| `modules/cosmos`         | Azure Cosmos DB (MongoDB API, serverless)                  | 🔜 Planned  |
+| `modules/keyvault`       | Azure Key Vault + role assignments                         | 🔜 Planned  |
 
 State is stored remotely in Azure Blob Storage (`tfstatedevinitcron/tfstate/soqoni/soqoni.tfstate`). No state file in this repo.
 
@@ -69,12 +68,12 @@ soqoni-terraform/
 
 ## Outputs
 
-| Output | Value |
-|--------|-------|
-| `aks_cluster_name` | `soqoni-aks` |
-| `aks_kubelet_identity` | Object ID of the kubelet managed identity (used for Key Vault role assignments) |
-| `aks_get_credentials_cmd` | `az aks get-credentials ...` command ready to copy |
-| `resource_group_name` | `soqoni-rg` |
+| Output                    | Value                                                                           |
+| ------------------------- | ------------------------------------------------------------------------------- |
+| `aks_cluster_name`        | `soqoni-aks`                                                                    |
+| `aks_kubelet_identity`    | Object ID of the kubelet managed identity (used for Key Vault role assignments) |
+| `aks_get_credentials_cmd` | `az aks get-credentials ...` command ready to copy                              |
+| `resource_group_name`     | `soqoni-rg`                                                                     |
 
 ## Workflow
 
@@ -98,12 +97,12 @@ terraform destroy
 
 Remote state lives in an existing Azure Storage Account — bootstrapped once manually, never managed by Terraform (avoids the chicken-and-egg problem):
 
-| Property | Value |
-|----------|-------|
-| Resource group | `terraform-state-rg` |
-| Storage account | `tfstatedevinitcron` |
-| Container | `tfstate` |
-| Key | `soqoni/soqoni.tfstate` |
+| Property        | Value                   |
+| --------------- | ----------------------- |
+| Resource group  | `terraform-state-rg`    |
+| Storage account | `tfstatedevinitcron`    |
+| Container       | `tfstate`               |
+| Key             | `soqoni/soqoni.tfstate` |
 
 State is locked via Azure Blob lease during applies (safe concurrent use).
 
