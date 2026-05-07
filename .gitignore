@@ -5,3 +5,4 @@ notez/*
 *.tfstate
 *.tfstate.backup
 terraform.tfvars
+.markdown-preview.html
