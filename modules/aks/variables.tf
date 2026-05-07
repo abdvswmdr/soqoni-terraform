@@ -26,6 +26,11 @@ variable "vm_size" {
   type = string
 }
 
+variable "ssh_public_key" {
+  type        = string
+  description = "SSH public key for the Linux node pool admin user"
+}
+
 variable "tags" {
   type    = map(string)
   default = {}
