@@ -11,12 +11,29 @@ resource "azurerm_kubernetes_cluster" "this" {
     vm_size    = var.vm_size
   }
 
+  linux_profile {
+    admin_username = "azureuser"
+    ssh_key {
+      key_data = var.ssh_public_key
+    }
+  }
+
   identity {
     type = "SystemAssigned"
   }
 
   key_vault_secrets_provider {
     secret_rotation_enabled = false
+  }
+
+  network_profile {
+    network_plugin      = "azure"
+    network_plugin_mode = "overlay"
+    dns_service_ip      = "10.0.0.10"
+    service_cidr        = "10.0.0.0/16"
+    pod_cidr            = "10.244.0.0/16"
+    load_balancer_sku   = "standard"
+    outbound_type       = "loadBalancer"
   }
 
   tags = var.tags
