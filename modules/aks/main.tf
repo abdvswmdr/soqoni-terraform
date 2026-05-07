@@ -37,4 +37,10 @@ resource "azurerm_kubernetes_cluster" "this" {
   }
 
   tags = var.tags
+
+  lifecycle {
+    ignore_changes = [
+      linux_profile[0].ssh_key[0].key_data,
+    ]
+  }
 }
