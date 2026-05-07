@@ -1,0 +1,55 @@
+variable "subscription_id" {
+  type        = string
+  description = "Azure subscription ID — set via TF_VAR_subscription_id or terraform.tfvars (gitignored)"
+}
+
+variable "location" {
+  type        = string
+  description = "Azure region for all resources"
+  default     = "eastasia"
+}
+
+variable "resource_group_name" {
+  type        = string
+  description = "Name of the resource group"
+  default     = "soqoni-rg"
+}
+
+variable "tags" {
+  type        = map(string)
+  description = "Tags applied to all resources"
+  default = {
+    project    = "soqoni"
+    managed_by = "terraform"
+  }
+}
+
+variable "aks_cluster_name" {
+  type        = string
+  description = "AKS cluster name"
+  default     = "soqoni-aks"
+}
+
+variable "aks_dns_prefix" {
+  type        = string
+  description = "DNS prefix for the AKS cluster (must match existing cluster on import)"
+  default     = "soqoni-aks-soqoni-rg-fc6b39"
+}
+
+variable "kubernetes_version" {
+  type        = string
+  description = "Kubernetes version for AKS"
+  default     = "1.34"
+}
+
+variable "node_count" {
+  type        = number
+  description = "Number of nodes in the default node pool"
+  default     = 1
+}
+
+variable "vm_size" {
+  type        = string
+  description = "VM size for the default node pool"
+  default     = "Standard_B2s"
+}
