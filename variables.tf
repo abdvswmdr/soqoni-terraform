@@ -58,3 +58,41 @@ variable "ssh_public_key" {
   type        = string
   description = "SSH public key for AKS Linux node pool — matches key used at cluster creation"
 }
+
+variable "mysql_server_name" {
+  type    = string
+  default = "soqoni-mysql"
+}
+
+variable "mysql_administrator_login" {
+  type    = string
+  default = "catalogueadmin"
+}
+
+variable "mysql_administrator_password" {
+  type      = string
+  sensitive = true
+  description = "MySQL admin password — only needed at import time; ignored on subsequent plans via lifecycle ignore_changes"
+}
+
+variable "cosmosdb_account_name" {
+  type    = string
+  default = "soqoni-cosmos"
+}
+
+variable "cosmosdb_location" {
+  type        = string
+  description = "Region for Cosmos DB — separate from main location (Malaysia West for lower latency to SEA)"
+  default     = "malaysiawest"
+}
+
+variable "keyvault_name" {
+  type    = string
+  default = "soqoni-kv"
+}
+
+variable "keyvault_tenant_id" {
+  type        = string
+  description = "Azure AD tenant ID — from az account show"
+  default     = "3f639a9b-27c8-4403-82b1-ebfb88052d15"
+}
