@@ -29,10 +29,10 @@ resource "azurerm_kubernetes_cluster" "this" {
   network_profile {
     network_plugin      = "azure"
     network_plugin_mode = "overlay"
-    dns_service_ip      = "10.0.0.10"
-    service_cidr        = "10.0.0.0/16"
-    pod_cidr            = "10.244.0.0/16"
-    load_balancer_sku   = "standard"
+    dns_service_ip      = var.dns_service_ip
+    service_cidr        = var.service_cidr
+    pod_cidr            = var.pod_cidr
+    load_balancer_sku   = var.load_balancer_sku
     outbound_type       = "loadBalancer"
   }
 
