@@ -76,8 +76,8 @@ variable "aks_load_balancer_sku" {
 
 variable "mysql_sku_name" {
   type    = string
-  default = "Standard_B1ms"
-  description = "Default SKU for MySQL (kept burstable for Azure for Students)"
+  default = "B_Standard_B1ms"
+  description = "MySQL Flexible Server SKU — Burstable tier prefix required (e.g. B_Standard_B1ms)"
 }
 
 variable "ssh_public_key" {
