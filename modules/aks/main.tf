@@ -41,6 +41,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   lifecycle {
     ignore_changes = [
       linux_profile[0].ssh_key[0].key_data,
+      default_node_pool[0].upgrade_settings,
     ]
   }
 }

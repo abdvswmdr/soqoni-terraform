@@ -34,4 +34,10 @@ resource "azurerm_cosmosdb_account" "this" {
   }
 
   tags = var.tags
+
+  lifecycle {
+    # Existing resource was created with automatic_failover_enabled=true via portal;
+    # ignoring to avoid a forced update on serverless account
+    ignore_changes = [automatic_failover_enabled]
+  }
 }
