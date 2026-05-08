@@ -57,11 +57,6 @@ resource "azurerm_role_assignment" "kubelet_kv_secrets_user" {
 }
 
 import {
-  to = azurerm_role_assignment.kubelet_kv_secrets_user
-  id = "/subscriptions/fc6b3998-07f2-49a2-b89b-c185f48448c3/resourceGroups/soqoni-rg/providers/Microsoft.KeyVault/vaults/soqoni-kv/providers/Microsoft.Authorization/roleAssignments/f1f23615-81a7-43ac-8443-30de7533aca6"
-}
-
-import {
   to = module.mysql.azurerm_mysql_flexible_server.this
   id = "/subscriptions/fc6b3998-07f2-49a2-b89b-c185f48448c3/resourceGroups/soqoni-rg/providers/Microsoft.DBforMySQL/flexibleServers/soqoni-mysql"
 }
