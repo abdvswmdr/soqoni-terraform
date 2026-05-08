@@ -21,7 +21,8 @@ variable "administrator_password" {
 
 variable "sku_name" {
   type    = string
-  default = "B_Standard_B1ms"
+  # Keep burstable SKU by default for Azure for Students accounts
+  default = "Standard_B1ms"
 }
 
 variable "mysql_version" {
