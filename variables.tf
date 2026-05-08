@@ -70,9 +70,9 @@ variable "mysql_administrator_login" {
 }
 
 variable "mysql_administrator_password" {
-  type      = string
-  sensitive = true
-  description = "MySQL admin password — only needed at import time; ignored on subsequent plans via lifecycle ignore_changes"
+  type        = string
+  sensitive   = true
+  description = "MySQL admin password — must pass provider complexity validation but is never applied (lifecycle ignore_changes)"
 }
 
 variable "cosmosdb_account_name" {
