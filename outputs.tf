@@ -19,3 +19,15 @@ output "aks_get_credentials_cmd" {
   description = "Command to configure kubectl for this cluster"
   value       = "az aks get-credentials --resource-group ${module.resource_group.name} --name ${module.aks.cluster_name} --overwrite-existing"
 }
+
+output "mysql_server_fqdn" {
+  value = module.mysql.server_fqdn
+}
+
+output "cosmosdb_endpoint" {
+  value = module.cosmosdb.endpoint
+}
+
+output "keyvault_uri" {
+  value = module.keyvault.vault_uri
+}
