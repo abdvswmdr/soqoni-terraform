@@ -54,6 +54,32 @@ variable "vm_size" {
   default     = "Standard_B2s"
 }
 
+variable "aks_dns_service_ip" {
+  type    = string
+  default = "10.0.0.10"
+}
+
+variable "aks_service_cidr" {
+  type    = string
+  default = "10.0.0.0/16"
+}
+
+variable "aks_pod_cidr" {
+  type    = string
+  default = "10.244.0.0/16"
+}
+
+variable "aks_load_balancer_sku" {
+  type    = string
+  default = "standard"
+}
+
+variable "mysql_sku_name" {
+  type    = string
+  default = "Standard_B1ms"
+  description = "Default SKU for MySQL (kept burstable for Azure for Students)"
+}
+
 variable "ssh_public_key" {
   type        = string
   description = "SSH public key for AKS Linux node pool — matches key used at cluster creation"
