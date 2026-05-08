@@ -15,10 +15,6 @@ resource "azurerm_mysql_flexible_server" "this" {
   backup_retention_days        = var.backup_retention_days
   geo_redundant_backup_enabled = false
 
-  high_availability {
-    mode = "Disabled"
-  }
-
   tags = var.tags
 
   lifecycle {
@@ -26,7 +22,6 @@ resource "azurerm_mysql_flexible_server" "this" {
     ignore_changes = [
       administrator_password,
       zone,
-      high_availability[0].standby_availability_zone,
     ]
   }
 }
