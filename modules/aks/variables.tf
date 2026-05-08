@@ -35,3 +35,23 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+variable "dns_service_ip" {
+  type    = string
+  default = "10.0.0.10"
+}
+
+variable "service_cidr" {
+  type    = string
+  default = "10.0.0.0/16"
+}
+
+variable "pod_cidr" {
+  type    = string
+  default = "10.244.0.0/16"
+}
+
+variable "load_balancer_sku" {
+  type    = string
+  default = "standard"
+}
