@@ -8,16 +8,12 @@ resource "azurerm_mysql_flexible_server" "this" {
   version                = var.mysql_version
 
   storage {
-    size_gb                  = var.storage_size_gb
-    auto_grow_enabled        = true
-    auto_io_scaling_enabled  = true
-    io_scaling_enabled       = true
+    size_gb           = var.storage_size_gb
+    auto_grow_enabled = true
   }
 
-  backup {
-    retention_days              = var.backup_retention_days
-    geo_redundant_backup_enabled = false
-  }
+  backup_retention_days        = var.backup_retention_days
+  geo_redundant_backup_enabled = false
 
   high_availability {
     mode = "Disabled"
