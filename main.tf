@@ -17,3 +17,45 @@ module "aks" {
   ssh_public_key      = var.ssh_public_key
   tags                = var.tags
 }
+
+module "mysql" {
+  source                 = "./modules/mysql"
+  server_name            = var.mysql_server_name
+  location               = module.resource_group.location
+  resource_group_name    = module.resource_group.name
+  administrator_login    = var.mysql_administrator_login
+  administrator_password = var.mysql_administrator_password
+  tags                   = var.tags
+}
+
+module "cosmosdb" {
+  source              = "./modules/cosmosdb"
+  account_name        = var.cosmosdb_account_name
+  location            = var.cosmosdb_location
+  resource_group_name = module.resource_group.name
+  tags                = var.tags
+}
+
+module "keyvault" {
+  source              = "./modules/keyvault"
+  vault_name          = var.keyvault_name
+  location            = module.resource_group.location
+  resource_group_name = module.resource_group.name
+  tenant_id           = var.keyvault_tenant_id
+  tags                = var.tags
+}
+
+import {
+  to = module.mysql.azurerm_mysql_flexible_server.this
+  id = "/subscriptions/fc6b3998-07f2-49a2-b89b-c185f48448c3/resourceGroups/soqoni-rg/providers/Microsoft.DBforMySQL/flexibleServers/soqoni-mysql"
+}
+
+import {
+  to = module.cosmosdb.azurerm_cosmosdb_account.this
+  id = "/subscriptions/fc6b3998-07f2-49a2-b89b-c185f48448c3/resourceGroups/soqoni-rg/providers/Microsoft.DocumentDB/databaseAccounts/soqoni-cosmos"
+}
+
+import {
+  to = module.keyvault.azurerm_key_vault.this
+  id = "/subscriptions/fc6b3998-07f2-49a2-b89b-c185f48448c3/resourceGroups/soqoni-rg/providers/Microsoft.KeyVault/vaults/soqoni-kv"
+}
