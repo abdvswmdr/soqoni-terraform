@@ -16,6 +16,10 @@ module "aks" {
   vm_size             = var.vm_size
   ssh_public_key      = var.ssh_public_key
   tags                = var.tags
+  dns_service_ip      = var.aks_dns_service_ip
+  service_cidr        = var.aks_service_cidr
+  pod_cidr            = var.aks_pod_cidr
+  load_balancer_sku   = var.aks_load_balancer_sku
 }
 
 module "mysql" {
@@ -25,6 +29,7 @@ module "mysql" {
   resource_group_name    = module.resource_group.name
   administrator_login    = var.mysql_administrator_login
   administrator_password = var.mysql_administrator_password
+  sku_name               = var.mysql_sku_name
   tags                   = var.tags
 }
 
