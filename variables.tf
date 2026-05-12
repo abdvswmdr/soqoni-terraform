@@ -122,3 +122,8 @@ variable "keyvault_tenant_id" {
   description = "Azure AD tenant ID — from az account show"
   default     = "3f639a9b-27c8-4403-82b1-ebfb88052d15"
 }
+
+variable "dev_ip_address" {
+  type        = string
+  description = "Developer workstation public IP — used in MySQL firewall to allow local access for debugging. Update in terraform.tfvars when IP changes."
+}
