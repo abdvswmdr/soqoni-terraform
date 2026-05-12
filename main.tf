@@ -87,11 +87,6 @@ resource "azurerm_mysql_flexible_server_firewall_rule" "allow_dev" {
 }
 
 import {
-  to = azurerm_mysql_flexible_server_firewall_rule.allow_dev
-  id = "/subscriptions/fc6b3998-07f2-49a2-b89b-c185f48448c3/resourceGroups/soqoni-rg/providers/Microsoft.DBforMySQL/flexibleServers/soqoni-mysql/firewallRules/allow-local-ip"
-}
-
-import {
   to = module.mysql.azurerm_mysql_flexible_server.this
   id = "/subscriptions/fc6b3998-07f2-49a2-b89b-c185f48448c3/resourceGroups/soqoni-rg/providers/Microsoft.DBforMySQL/flexibleServers/soqoni-mysql"
 }
