@@ -50,6 +50,16 @@ module "keyvault" {
   tags                = var.tags
 }
 
+resource "helm_release" "ingress_nginx" {
+  name             = "ingress-nginx"
+  repository       = "https://kubernetes.github.io/ingress-nginx"
+  chart            = "ingress-nginx"
+  namespace        = "ingress-nginx"
+  create_namespace = true
+
+  depends_on = [module.aks]
+}
+
 resource "azurerm_role_assignment" "kubelet_kv_secrets_user" {
   scope                = module.keyvault.vault_id
   role_definition_name = "Key Vault Secrets User"
