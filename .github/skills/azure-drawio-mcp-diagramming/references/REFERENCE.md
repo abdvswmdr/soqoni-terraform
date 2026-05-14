@@ -34,8 +34,7 @@ python3 search_azure2_icons_github.py --max-results 9999 > ../references/azure2-
 ### Azure Network Topology Diagram (Infrastructure Focus)
 
 ```text
-Create a professional Azure network topology diagram from my Terraform infrastructure
-in the components/ folder, emphasizing network isolation and traffic flows.
+Create a professional Azure network topology diagram from my Terraform infrastructure in the @/home/abdvswmdr/soqoni-terraform/docs/ folder, emphasizing network isolation and traffic flows.
 
 Requirements:
 - Show VNet architecture with clear network boundaries (use thick borders strokeWidth=4
@@ -50,10 +49,9 @@ Requirements:
 - Color-code different zones (DMZ VNet in yellow, Internal VNet in green,
   Management zone in blue, VNet Peering in grey, External Services in orange)
 - Show VNet peering connections and external services in separate zones
-- Use Azure2 icons from draw.io MCP
+- Use Azure2 icons from draw.io MCP, or since its not in vscode gh-copilot, then the icons are in @/home/abdvswmdr/soqoni-terraform/.github/skills/azure-drawio-mcp-diagramming/references/azure2-complete-catalog.txt or I'm not sure if this script might be useful @/home/abdvswmdr/soqoni-terraform/.github/skills/azure-drawio-mcp-diagramming/scripts/search_azure2_icons_github.py 
 
-Focus on the networking aspects - how components are isolated, how traffic flows
-between them, and what the network boundaries are.
+Focus on the networking aspects - how components are isolated, how traffic flows between them, and what the network boundaries are.
 ```
 
 ### Basic Azure Architecture Diagram
