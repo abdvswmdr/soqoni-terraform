@@ -57,6 +57,14 @@ resource "helm_release" "ingress_nginx" {
   namespace        = "ingress-nginx"
   create_namespace = true
 
+  # externalTrafficPolicy: Local — Azure LB probes the healthCheckNodePort (returns 200
+  # when pod is present) instead of the main port. Without this, the LB probes GET /
+  # on the NodePort, gets 404 (hostname-based routing), marks node unhealthy, drops traffic.
+  set {
+    name  = "controller.service.externalTrafficPolicy"
+    value = "Local"
+  }
+
   depends_on = [module.aks]
 }
 
